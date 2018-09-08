@@ -122,3 +122,42 @@ L = list(filter(is_odd, range(1, 20)))
 print(L)
 L_lambda = list(filter(lambda x:x%2==1, range(1, 20))) #与上一个写法等效，简洁
 print(L)
+
+#namedtuple 带名称的tuple子类
+from collections import namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(1, 2)
+Circle = namedtuple('Circle', ['x', 'y', 'r'])
+cir = Circle(2,2,5)
+
+#deque 可以双向插入的list
+from collections import deque
+q = deque(['a', 'b', 'c'])
+q.append('x')
+q.appendleft('y') #['y', 'a', 'b', 'c', 'x']  .popleft()
+
+# OrderedDict 排序的Dict 按照插入的顺序排列，不是Key本身排序
+from collections import OrderedDict
+od = OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+
+#Counter 计数器
+from collections import Counter
+c = Counter()
+for ch in 'programming':
+    c[ch] = c[ch] + 1
+print(c)  #Counter({'r': 2, 'g': 2, 'm': 2, 'p': 1, 'o': 1, 'a': 1, 'i': 1, 'n': 1})
+
+
+from contextlib import contextmanager
+@contextmanager
+def tag(name):
+    print("<%s>" % name)
+    yield
+    print("</%s>" % name)
+
+with tag("h1"):
+    print("hello")
+    print("world")
+#with语句首先执行yield之前的语句，因此打印出<h1>；
+#yield调用会执行with语句内部的所有语句，因此打印出hello和world；
+#最后执行yield之后的语句，打印出</h1>。
