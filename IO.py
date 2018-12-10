@@ -26,10 +26,10 @@ print(f.getvalue())
 
 f = StringIO('Hello!\nHi!\nGoodbye!')
 while True:
-     s = f.readline()
-     if s == '':
-         break
-     print(s.strip())
+    s = f.readline()
+    if s == '':
+        break
+    print(s.strip())
 
 from io import BytesIO  #BytesIO
 f = BytesIO()
